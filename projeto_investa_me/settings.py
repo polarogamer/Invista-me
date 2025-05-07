@@ -21,6 +21,7 @@ load_dotenv()
 
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -85,17 +86,17 @@ WSGI_APPLICATION = 'projeto_investa_me.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'wulpfiiVedisJcNgQlbZykUzCRwCtceK',
+        'PASSWORD': 'hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp',
         'HOST': 'postgres.railway.internal',
         'PORT': '5432',
     }
 }
-
 
 
 prod_db = dj_database_url.config(conn_max_age=500)
