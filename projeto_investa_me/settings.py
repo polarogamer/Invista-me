@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 
 
@@ -81,8 +86,16 @@ WSGI_APPLICATION = 'projeto_investa_me.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'wulpfiiVedisJcNgQlbZykUzCRwCtceK',
+        'HOST': 'postgres.railway.internal',
+        'PORT': '5432',
+    }
 }
+
 
 
 prod_db = dj_database_url.config(conn_max_age=500)
@@ -106,6 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
