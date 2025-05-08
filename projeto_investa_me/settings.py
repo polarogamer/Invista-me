@@ -1,12 +1,9 @@
 from pathlib import Path
 import os
-import environ
+
 import dj_database_url
 
 # Inicializa o ambiente
-env = environ.Env()
-environ.Env.read_env()
-
 
 # Diretório base
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -60,13 +57,17 @@ TEMPLATES = [
     },
 ]
 
+# Segurança e modo debug
+DEBUG = True  # ou False em produção
+
+
 # Banco de dados (usando DATABASE_URL do Railway)
 
 DATABASE = {
     'default': dj_database_url.config(
         default='postgresql://postgres:hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp@centerbeam.proxy.rlwy.net:30189/railway',
         conn_max_age=610,
-        ssl_require=not DEBUG
+        ssl_require= not DEBUG
     )
 }
 
