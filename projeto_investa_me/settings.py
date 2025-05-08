@@ -66,7 +66,7 @@ TEMPLATES = [
 
 # Banco de dados (usando DATABASE_URL do Railway)
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://postgres:password@localhost:5432/dbname')
+    'default': env.db('DATABASE_URL', default='postgres://postgres:hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp@centerbeam.proxy.rlwy.net:30189/railway')
 }
 
 # Validação de senha
