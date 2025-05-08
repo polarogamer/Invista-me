@@ -101,7 +101,6 @@ DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres://postgres:password@localhost:5432/dbname')
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
