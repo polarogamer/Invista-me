@@ -14,10 +14,11 @@ from pathlib import Path
 import os
 import dj_database_url
 import os
-from dotenv import load_dotenv
+import environ
 
-load_dotenv()
-
+# Inicializa o ambiente
+env = environ.Env()
+environ.Env.read_env()
 
 
 
@@ -35,7 +36,7 @@ SECRET_KEY = 'django-insecure-g9+pjsna3tn-j2l(=p0+tt9+3+b@cne9^caq9&(^t@d+zjug6w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -86,15 +87,18 @@ WSGI_APPLICATION = 'projeto_investa_me.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-
-
-
-
+""" 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+"""
+
+
+DATABASES = {
+    'default': env.db('DATABASE_URL', default='postgres://postgres:password@localhost:5432/dbname')
 }
 
 # Password validation
@@ -133,6 +137,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 LOGIN_REDIRECT_URL = 'investimentos'
