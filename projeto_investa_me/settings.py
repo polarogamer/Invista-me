@@ -1,17 +1,15 @@
 from pathlib import Path
 import os
-
 import dj_database_url
 
-# Inicializa o ambiente
-
-# Diretório base
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = "zrv9^ik4ks8b5%c0u1qk-0d7#e3zx@z8n8*v92eq&4s^j$+b8d"
+
+DEBUG = True  # ou False em produção
 
 ALLOWED_HOSTS = ['*']
 
-# Apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,7 +23,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
 ]
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -36,11 +33,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# URLs e WSGI
 ROOT_URLCONF = 'projeto_investa_me.urls'
 WSGI_APPLICATION = 'projeto_investa_me.wsgi.application'
 
-# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -57,22 +52,14 @@ TEMPLATES = [
     },
 ]
 
-# Segurança e modo debug
-DEBUG = True  # ou False em produção
-
-
-# Banco de dados (usando DATABASE_URL do Railway)
-
-DATABASE = {
+DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://postgres:hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp@centerbeam.proxy.rlwy.net:30189/railway',
         conn_max_age=610,
-        ssl_require= not DEBUG
+        ssl_require=not DEBUG
     )
 }
 
-
-# Validação de senha
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -80,24 +67,19 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Internacionalização
 LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 USE_I18N = True
 USE_TZ = True
 
-# Arquivos estáticos
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# Configs do crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-# Autenticação
 LOGIN_REDIRECT_URL = 'investimentos'
 LOGIN_URL = 'login'
 
-# Tipo de chave padrão do banco
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
