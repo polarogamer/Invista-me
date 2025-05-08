@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import environ
-
+import dj_database_url
 
 # Inicializa o ambiente
 env = environ.Env()
@@ -11,12 +11,8 @@ environ.Env.read_env()
 # Diretório base
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Segurança
-SECRET_KEY = env('SECRET_KEY', default='unsafe-secret')
-DEBUG = env.bool('DEBUG', default=False)
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost', '127.0.0.1'])
 
-
+ALLOWED_HOSTS = ['*']
 
 # Apps
 INSTALLED_APPS = [
@@ -65,9 +61,15 @@ TEMPLATES = [
 ]
 
 # Banco de dados (usando DATABASE_URL do Railway)
-DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://postgres:hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp@centerbeam.proxy.rlwy.net:30189/railway')
+
+DATABASE = {
+    'default': dj_database_url.config(
+        default='postgresql://postgres:hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp@centerbeam.proxy.rlwy.net:30189/railway',
+        conn_max_age=610,
+        ssl_require=not DEBUG
+    )
 }
+
 
 # Validação de senha
 AUTH_PASSWORD_VALIDATORS = [
