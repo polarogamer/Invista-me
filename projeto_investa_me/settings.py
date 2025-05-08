@@ -3,9 +3,8 @@ import os
 import environ
 
 # Inicializa o ambiente
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+# Inicializa o ambiente
+env = environ.Env()
 environ.Env.read_env()
 
 # Diretório base
