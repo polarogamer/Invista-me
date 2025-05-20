@@ -4,9 +4,9 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "ArQMUPsIqMekrFtQaAAThjBcmKTJTxkz"
+SECRET_KEY = 'django-insecure-1234567890abcxyz!'
 
-DEBUG = True  # ou False em produção
+DEBUG = True  # Coloque False em produção
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,7 +59,6 @@ DATABASES = {
         ssl_require=not DEBUG
     )
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
