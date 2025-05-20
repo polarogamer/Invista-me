@@ -4,7 +4,7 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "zrv9^ik4ks8b5%c0u1qk-0d7#e3zx@z8n8*v92eq&4s^j$+b8d"
+SECRET_KEY = "ArQMUPsIqMekrFtQaAAThjBcmKTJTxkz"
 
 DEBUG = True  # ou False em produção
 
