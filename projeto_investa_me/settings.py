@@ -54,11 +54,12 @@ TEMPLATES = [
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres:hLXFTSVQErAFqAYjYaXChLZnHKQkJJSp@centerbeam.proxy.rlwy.net:30189/railway',
+        default='postgresql://postgres:ArQMUPsIqMekrFtQaAAThjBcmKTJTxkz@postgres.railway.internal:5432/railway',
         conn_max_age=610,
         ssl_require=not DEBUG
     )
 }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
